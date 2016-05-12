@@ -21,8 +21,19 @@ namespace JIRA.classes
         private CUserRootObject root;
 
         public string UserName { get; private set; }
-        public List<CJiraProject> Projects { get; set; }
         public bool LoggedIn { get; set; }
+
+        public List<CJiraProject> Projects
+        {
+            get
+            {
+                if (root != null)
+                    return root.projects;
+                else
+                    return null;
+            }
+        }
+
 
         public CUser(string username, Stream httpLoginResponse)
         {

@@ -52,6 +52,12 @@
   <ItemGroup>
     <Compile Include="classes\CJiraProject.cs" />
     <Compile Include="classes\CUser.cs" />
+    <Compile Include="components\CompIssueTypes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\CompIssueTypes.Designer.cs">
+      <DependentUpon>CompIssueTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="components\CompLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="components\CompIssueTypes.resx">
+      <DependentUpon>CompIssueTypes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="components\CompLogin.resx">
       <DependentUpon>CompLogin.cs</DependentUpon>
     </EmbeddedResource>

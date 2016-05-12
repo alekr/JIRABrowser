@@ -22,6 +22,11 @@ namespace JIRA
         public FormJIRA()
         {
             InitializeComponent();
+
+            this.Width = 540;
+            this.Height = 430;
+
+            panelComponents.Visible = false;
         }
 
         private void OnLogin(object sender, EventArgs e)
@@ -35,8 +40,16 @@ namespace JIRA
                     butLogin.Text = butLogin.ToolTipText = "Log out";
                     butLogin.Image = global::JIRA.Properties.Resources.logout;
 
+                    foreach (CJiraProject project in user.Projects)
+                    {
+                        toolStripComboBox1.Items.Add(project.key);
+                    }
+
                     compLogin1.Visible = false;
+                    panelComponents.Visible = true;
                     FormBorderStyle = FormBorderStyle.Sizable;
+
+                    DisplayProject();
                 }
             }
             else
@@ -44,7 +57,7 @@ namespace JIRA
                 compLogin1.Logout();
                 user = null;
 
-                toolStripLabelUser.Text = "Logged out";
+                toolStripLabelUser.Text = "    ";
                 butLogin.Text = butLogin.ToolTipText = "Log in";
                 butLogin.Image = global::JIRA.Properties.Resources.login;
 
@@ -53,7 +66,34 @@ namespace JIRA
 
                 FormBorderStyle = FormBorderStyle.FixedDialog;
                 compLogin1.Visible = true;
+                panelComponents.Visible = false;
             }
         }
+
+        private void DisplayProject()
+        {
+            if (toolStripComboBox1.Items.Count > 0)
+            {
+                toolStripComboBox1.SelectedIndex = 0;
+                CJiraProject project = GetProject(0);
+
+                if (project != null)
+                    compIssueTypes1.SetProject(project);
+            }
+        }
+
+        private CJiraProject GetProject(int index)
+        {
+            int i = 0;
+            foreach (CJiraProject project in user.Projects)
+            {
+                if (i == index)
+                    return project;
+                i++;
+            }
+
+            return null;
+        }
+
     }
 }
