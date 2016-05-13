@@ -38,7 +38,7 @@ namespace JIRA
                 {
                     toolStripLabelUser.Text = user.UserName;
                     butLogin.Text = butLogin.ToolTipText = "Log out";
-                    butLogin.Image = global::JIRA.Properties.Resources.logout;
+                    butLogin.Image = global::JIRA.Properties.Resources.login;
 
                     foreach (CJiraProject project in user.Projects)
                     {
