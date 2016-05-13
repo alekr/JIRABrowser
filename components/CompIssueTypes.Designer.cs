@@ -78,6 +78,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "CompIssueTypes";
             this.Size = new System.Drawing.Size(219, 524);
+            this.Load += new System.EventHandler(this.CompIssueTypes_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
